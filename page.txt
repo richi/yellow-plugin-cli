@@ -1,0 +1,6 @@
+---
+Title: Yellow Terminal
+Template: cli
+---
+
+HTML CLI interface
