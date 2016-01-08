@@ -1,4 +1,4 @@
-CLI plugin 0.1.1
+CLI plugin 0.1.2
 =================
 
 This is an experimental HTML - CLI gateway.
@@ -16,3 +16,8 @@ How to install?
 6. Add [page.txt](page.txt?raw=true) to your `/content/9-cli` folder.
 
 To uninstall delete the plugin files.
+
+License
+----------------------
+
+[WTFPL](http://www.wtfpl.net)

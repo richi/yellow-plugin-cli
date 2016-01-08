@@ -1,10 +1,10 @@
 <?php
-// This file may be used and distributed under the terms of the public license.
+// This file may be used and distributed under the terms of the WTF public license.
 
 // cli plugin
 class YellowCli
 {
-	const Version = "0.1.1";
+	const Version = "0.1.2";
 	var $yellow;			//access to API
 	
 	// Handle initialisation
@@ -23,11 +23,15 @@ class YellowCli
 			$this->yellow->page->set("cliHelp", "Please Login!");
 			$this->yellow->page->set("cliResults", "");
 			
+			$location = $this->yellow->page->getLocation();
 			$interface = $this->yellow->plugins->get('webinterface');
+
 			if ($interface->isUser())
 			{
 				$cmd = $this->yellow->plugins->get('commandline'); 
-				$this->yellow->page->set("cliHelp", implode("\n", $cmd->getCommandHelp()));
+				$helpTxt = implode("\n", $cmd->getCommandHelp());
+				
+				$this->yellow->page->set("cliHelp", $helpTxt);
 
 				$query = trim($_REQUEST["query"]);
 				$tokens = array_filter(explode(' ', $query), "strlen");
@@ -36,10 +40,22 @@ class YellowCli
 					array_unshift($tokens, "dummy");
 					ob_start();
 					$cmd->onCommand($tokens);
-					$this->yellow->page->set("cliResults", ob_get_contents());
+					$result = ob_get_contents();
 					ob_end_clean();
-
+					
 					$this->yellow->page->setHeader("Cache-Control", "max-age=0, no-cache");
+
+					if ($tokens[1] == "build")
+					{
+						ob_start();
+						echo "<html><h1>$tokens[1]:</h1><pre>\n$result</pre><a href=$location>Back</a></html>";
+						$this->yellow->page->setOutput(ob_get_contents());
+						ob_end_clean();
+					}
+					else
+					{
+						$this->yellow->page->set("cliResults", $result);
+					}
 				}
 			}
 		}
