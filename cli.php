@@ -4,13 +4,14 @@
 // cli plugin
 class YellowCli
 {
-	const Version = "0.1.2";
+	const Version = "0.1.3";
 	var $yellow;			//access to API
 	
 	// Handle initialisation
 	function onLoad($yellow)
 	{
 		$this->yellow = $yellow;
+		$this->cnt = 0;
 	}
 	
 	// Handle page parsing
@@ -37,7 +38,9 @@ class YellowCli
 				$tokens = array_filter(explode(' ', $query), "strlen");
 				if(!empty($tokens))
 				{
+				 	$_SERVER["LOCATION_ARGS"] = "";
 					array_unshift($tokens, "dummy");
+					
 					ob_start();
 					$cmd->onCommand($tokens);
 					$result = ob_get_contents();
