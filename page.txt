@@ -1,6 +1,7 @@
 ---
 Title: Yellow Terminal
 Template: cli
+Status: ignore
 ---
 
 HTML CLI interface
