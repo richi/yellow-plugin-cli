@@ -1,5 +1,6 @@
 <?php
-// This file may be used and distributed under the terms of the WTF public license.
+// Source: https://github.com/richi/
+// This file may be used and distributed under the terms of the public license.
 
 // cli plugin
 class YellowCli

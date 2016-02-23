@@ -1,7 +1,7 @@
 CLI plugin
 ==========
 
-This is an experimental HTML - CLI gateway.
+This is a HTML - CLI gateway.
 
 Use the yellow command line interface without shell access.
 
@@ -44,7 +44,3 @@ Optionally you can use this .htaccess file to serve the data directly out of the
 
 On some shared servers (STRATO for example) DOCUMENT_ROOT is not working. If this is the case simply replace `%{DOCUMENT_ROOT}` with the real path.
 
-License
--------
-
-[WTFPL](http://www.wtfpl.net)
