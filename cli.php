@@ -26,7 +26,7 @@ class YellowCli
 			
 			if($this->yellow->plugins->isExisting("commandline") &&
 			   $this->yellow->plugins->isExisting("webinterface") &&
-			   $this->yellow->plugins->get("webinterface")->isUser())
+			   $this->yellow->plugins->get("webinterface")->response->isUser())
 			{
 				$help = $this->yellow->plugins->get("commandline")->getCommandHelp();
 				$this->yellow->page->set("cliHelp", implode("\n", $help));
